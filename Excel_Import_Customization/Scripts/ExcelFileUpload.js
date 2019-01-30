@@ -147,8 +147,8 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (data) {
-                console.log(JSON.parse(data.Data));
-                let resultArray = JSON.parse(data.Data);
+                console.log(data.Data);
+                let resultArray = (data.Data);
                 let tblHtml = '';
                 let tabularData= getTabularData(resultArray);
 

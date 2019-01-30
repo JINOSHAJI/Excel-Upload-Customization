@@ -151,11 +151,17 @@ namespace Excel_Import_Customization.Controllers
                         }
                         rows.Add(row);
                     }
+                  
+                    response.Data = (rows);
 
-                    response.Data = serializer.Serialize(rows);
+                    JsonResult jsonResult = new JsonResult();
+                    jsonResult.MaxJsonLength = Int32.MaxValue;
 
-
-                    return Json(response, JsonRequestBehavior.AllowGet);
+                    jsonResult = Json(response);
+                    jsonResult.MaxJsonLength = Int32.MaxValue;
+                    jsonResult.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+                    return jsonResult;
+                     
 
                   //  response = ImportDataFrom_Excel(dtExcel, Month);
 
